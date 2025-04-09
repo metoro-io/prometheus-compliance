@@ -1,8 +1,15 @@
 
 test_cases:
   - query: 'sum(demo_memory_usage_bytes)'
+  - query: 'max(demo_memory_usage_bytes)'
+  - query: 'min(demo_memory_usage_bytes)'
+  - query: 'avg(demo_memory_usage_bytes)'
+  - query: 'sum(demo_memory_usage_bytes{type="free"})'
+  - query: 'max(demo_memory_usage_bytes{type="free"})'
+  - query: 'min(demo_memory_usage_bytes{type="free"})'
+  - query: 'avg(demo_memory_usage_bytes{type="free"})'
 
 query_time_parameters:
-  end_time: '1744199520'
+  end_time: '1744204140'
   range_in_seconds: 300
   resolution_in_seconds: 60
