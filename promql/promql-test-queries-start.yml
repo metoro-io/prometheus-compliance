@@ -23,6 +23,15 @@ test_cases:
   - query: 'sum(demo_memory_usage_bytes{instance=~"demo.promlabs.com:.*"})'
   - query: 'sum(demo_memory_usage_bytes{instance!~".*:10000"})'
   - query: 'sum(demo_memory_usage_bytes{type="free", instance!="demo.promlabs.com:10000"})'
+  - query: 'sum by (type) (demo_memory_usage_bytes)'
+  - query: 'sum by (type) (demo_memory_usage_bytes{instance=~"demo.promlabs.com:.*"})'
+  - query: 'max by (type) (demo_memory_usage_bytes)'
+  - query: 'min by (type) (demo_memory_usage_bytes)'
+  - query: 'avg by (type) (demo_memory_usage_bytes)'
+  - query: 'sum by (type) (demo_memory_usage_bytes{instance=~"demo.promlabs.com:.*"})'
+  - query: 'sum by (type) (demo_memory_usage_bytes{instance!~".*:10000"})'
+  - query: 'sum by (type) (demo_memory_usage_bytes{type="free", instance!="demo.promlabs.com:10000"})'
+  - query: 'sum by (type, instance) (demo_memory_usage_bytes{type="used", instance=~"demo.promlabs.com:.*"})'
 
 query_time_parameters:
   end_time: '1744204140'
