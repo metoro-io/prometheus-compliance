@@ -1,0 +1,8 @@
+
+test_cases:
+  - query: 'sum(demo_memory_usage_bytes)'
+
+query_time_parameters:
+  end_time: '1744199520'
+  range_in_seconds: 300
+  resolution_in_seconds: 60

@@ -1,0 +1,12 @@
+reference_target_config:
+  query_url: 'http://localhost:9090'
+
+test_target_config:
+  query_url: 'http://localhost:8080/api/v1/prometheus'
+  headers:
+    # This is a test token only valid for a local instance of metoro. It is fine to be kept in a public repo
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lcklkIjoiOThlZDU1M2QtYzY4ZC00MDRhLWFhZjItNDM2ODllNWJiMGUzIiwiZW1haWwiOiJjaHJpc0BtZXRvcm8uaW8iLCJleHAiOjE4MjEyNDcyMzd9.SIM_78vlbg7bKdNZ8Otkbw6co5mqpoSz1TcDhVvSLJg'
+
+query_tweaks:
+  - note: 'All samples and queries are aligned to a step in Metoro.'
+    align_timestamps_to_step: true

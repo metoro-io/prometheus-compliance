@@ -83,6 +83,7 @@ func Load(content []byte) (*Config, error) {
 	cfg := &Config{}
 	err := yaml.UnmarshalStrict(content, cfg)
 	if err != nil {
+		fmt.Println(string(content))
 		return nil, err
 	}
 	return cfg, nil

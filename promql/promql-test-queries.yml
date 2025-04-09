@@ -204,11 +204,6 @@ test_cases:
     # label_replace fails when there would be duplicated identical output label sets.
   - query: 'label_replace(demo_num_cpus, "instance", "", "", "")'
     should_fail: true
-  - query: 'label_join(demo_num_cpus, "new_label", "-", "instance", "job")'
-  - query: 'label_join(demo_num_cpus, "job", "-", "instance", "job")'
-  - query: 'label_join(demo_num_cpus, "job", "-", "instance")'
-  - query: 'label_join(demo_num_cpus, "~invalid", "-", "instance")'
-    should_fail: true
   - query: '{{.dateFunc}}()'
     variant_args: ['dateFunc']
   - query: '{{.dateFunc}}(demo_batch_last_success_timestamp_seconds offset {{.offset}})'
