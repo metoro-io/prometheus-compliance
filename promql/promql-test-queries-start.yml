@@ -8,6 +8,9 @@ test_cases:
   - query: 'max(demo_memory_usage_bytes{type="free"})'
   - query: 'min(demo_memory_usage_bytes{type="free"})'
   - query: 'avg(demo_memory_usage_bytes{type="free"})'
+  - query: 'sum(demo_memory_usage_bytes{instance=~"demo.promlabs.com:.*"})'
+  - query: 'sum(demo_memory_usage_bytes{instance!~".*:10000"})'
+  - query: 'sum(demo_memory_usage_bytes{type="free", instance!="demo.promlabs.com:10000"})'
 
 query_time_parameters:
   end_time: '1744204140'
