@@ -10,3 +10,7 @@ test_target_config:
 query_tweaks:
   - note: 'All samples and queries are aligned to a step in Metoro.'
     align_timestamps_to_step: true
+  - note: 'Metoro adds an "environment" label to data coming from Prometheus, which needs to be stripped before comparing results.'
+    no_bug: true
+    drop_result_labels:
+     - environment

@@ -1,5 +1,11 @@
 
 test_cases:
+  # Gauges 
+  - query: 'demo_memory_usage_bytes'
+  - query: 'demo_memory_usage_bytes{type="free"}'
+  - query: 'demo_memory_usage_bytes{type="used"}'
+  - query: 'demo_memory_usage_bytes{type="used", instance=~"demo.promlabs.com:.*"}'
+  - query: 'demo_memory_usage_bytes{type="used", instance!~".*:10000"}'
   - query: 'sum(demo_memory_usage_bytes)'
   - query: 'max(demo_memory_usage_bytes)'
   - query: 'min(demo_memory_usage_bytes)'
