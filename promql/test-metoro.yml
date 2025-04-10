@@ -14,3 +14,6 @@ query_tweaks:
     no_bug: true
     drop_result_labels:
      - environment
+  - note: "Add some margin"
+    adjust_value_tolerance:
+      margin: 0.01

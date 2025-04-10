@@ -1,11 +1,6 @@
 
 test_cases:
   # Gauges 
-  - query: 'demo_memory_usage_bytes'
-  - query: 'demo_memory_usage_bytes{type="free"}'
-  - query: 'demo_memory_usage_bytes{type="used"}'
-  - query: 'demo_memory_usage_bytes{type="used", instance=~"demo.promlabs.com:.*"}'
-  - query: 'demo_memory_usage_bytes{type="used", instance!~".*:10000"}'
   - query: 'sum(demo_memory_usage_bytes)'
   - query: 'max(demo_memory_usage_bytes)'
   - query: 'min(demo_memory_usage_bytes)'
@@ -16,6 +11,7 @@ test_cases:
   - query: '2/ avg(demo_memory_usage_bytes) * 100'
   - query: '(2/ avg(demo_memory_usage_bytes)) + 10'
   - query: 'sum(demo_memory_usage_bytes) / sum(demo_num_cpus)'
+  - query: '(1 * 2 + 4 / 6 - (10%7)^2) * sum(demo_num_cpus)'
   - query: 'sum(demo_memory_usage_bytes{type="free"})'
   - query: 'max(demo_memory_usage_bytes{type="free"})'
   - query: 'min(demo_memory_usage_bytes{type="free"})'
@@ -29,9 +25,26 @@ test_cases:
   - query: 'min by (type) (demo_memory_usage_bytes)'
   - query: 'avg by (type) (demo_memory_usage_bytes)'
   - query: 'sum by (type) (demo_memory_usage_bytes{instance=~"demo.promlabs.com:.*"})'
-  - query: 'sum by (type) (demo_memory_usage_bytes{instance!~".*:10000"})'
+  - query: 'sum by (type) (demo_memory_usage_bytes{instance!~".*:10000"}) + 1'
   - query: 'sum by (type) (demo_memory_usage_bytes{type="free", instance!="demo.promlabs.com:10000"})'
-  - query: 'sum by (type, instance) (demo_memory_usage_bytes{type="used", instance=~"demo.promlabs.com:.*"})'
+
+  # Counter
+  - query: 'sum(rate(demo_cpu_usage_seconds_total[2m]))'
+  - query: 'sum(rate(demo_cpu_usage_seconds_total[2m])) * 2'
+  - query: 'sum(rate(demo_cpu_usage_seconds_total{instance=~"demo.promlabs.com:.*"}[2m]))'
+  - query: 'sum by (instance) (rate(demo_cpu_usage_seconds_total[2m]))'
+  - query: 'sum by (instance) (rate(demo_cpu_usage_seconds_total[2m])) * 2'
+
+  # Histograms
+  # - query: 'histogram_quantile(0.9, demo_api_request_duration_seconds_bucket)'
+  # - query: 'histogram_quantile(0.9, demo_api_request_duration_seconds_bucket) * 2'
+  # - query: 'sum(histogram_quantile(0.9, demo_api_request_duration_seconds_bucket)) * 2'
+
+
+  
+  # Histograms
+
+
 
 query_time_parameters:
   end_time: '1744204140'
